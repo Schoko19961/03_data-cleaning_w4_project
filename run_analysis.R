@@ -3,8 +3,9 @@ source("setup.R")
 create_raw_dataset <- function(){
   test <- load_data("test")
   train <- load_data("train")
-  test %>% add_row(train)
-  data[,1:2 || grep("(mean|std)",colnames(data))]
+  test %>% 
+    add_row(train) %>%
+    select(1:2, contains("mean"), contains("std"))
 }
 
 create_grouped_dataset <- function(){
